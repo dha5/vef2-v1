@@ -1,0 +1,19 @@
+{
+  "name": "vef2-2025-v1",
+  "version": "1.0.0",
+  "description": "Lausn á verkefni 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dha5/vef2-v1.git"
+  },
+  "author": "dha5",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dha5/vef2-v1/issues"
+  },
+  "homepage": "https://github.com/dha5/vef2-v1#readme"
+}
