@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/dha5/vef2-v1/issues"
   },
-  "homepage": "https://github.com/dha5/vef2-v1#readme"
+  "homepage": "https://github.com/dha5/vef2-v1#readme",
+  "type": "module"
 }

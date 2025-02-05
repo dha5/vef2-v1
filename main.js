@@ -1,31 +1,15 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import { readJson } from './src/lib/file.js';
 
-const INDEX_PATH = './data/index.json'
+const INDEX_PATH = './data/index.json';
 
-/**
- * Les skrá og skilar gögnum eða null
- * @param {string} filepath skráin sem á að lesa
- * @returns {Promise<unknown | null} Les skrá úr filepath og skilar innihaldi eða null ef villa kom upp.
- */
-
-async function readJson(filepath) {
-    console.log('Starting to read', filepath);
-    let data;
-    try {
-        data = await fs.readFile(path.resolve(filepath), 'utf-8');
-    } catch (error) {
-        console.error(`Error reading file ${filepath}:`, error.message);
-        return null;
+async function main() {
+    const indexData = await readJson(INDEX_PATH);
+    if (!indexData) {
+        console.error('Failed to read index.json');
+        return;
     }
-
-    try {
-        const parsed = JSON.parse(data);
-        return parsed;
-    } catch (error) {
-        console.error('Error parsing data as JSON');
-        return null;
-    }
-
+    
+    console.log('Index Data:', indexData);
 }
 
+main();
