@@ -84,6 +84,14 @@ main {
     gap: 0.5rem;
 }
 
+.answer-container {
+    display: block; /* Each answer on a new line */
+}
+
+fieldset {
+    margin-bottom: 1rem; /* Space between questions */
+}
+
 .answer label {
     display: flex;
     align-items: center;

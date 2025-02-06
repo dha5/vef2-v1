@@ -57,22 +57,26 @@ export function generateCategoryHtml(title, questions) {
         <h1>${title}</h1>
         <a href="index.html">Til baka</a>
         <form class="quiz-form">
-    ${questions.map((q, qIndex) => /* HTML */ `
-        <fieldset>
-            <legend>${q.question}</legend>
-            ${Array.isArray(q.answers)
-                ? q.answers.map((a, aIndex) => /* HTML */ `
-                    <label>
-                        <input type="radio" name="question-${qIndex}" value="${a.answer}" data-correct="${a.correct}">
-                        ${a.answer}
-                    </label>
-                `).join("")
-                : "<p>Ógild svör</p>"}
-        </fieldset>
-    `).join("")}
-    <button type="submit">Check Answers</button>
-</form>
-
+            ${questions.map((q, qIndex) => /* HTML */ `
+                <fieldset>
+                    <legend>${q.question}</legend>
+                    <div class="answers">
+                        ${Array.isArray(q.answers)
+                            ? q.answers.map((a) => /* HTML */ `
+                                <div class="answer-container">
+                                    <label>
+                                        <input type="radio" name="question-${qIndex}" value="${a.answer}" data-correct="${a.correct}">
+                                        ${a.answer}
+                                    </label>
+                                </div>
+                            `).join("")
+                            : "<p>Ógild svör</p>"}
+                    </div>
+                    <br> <!-- Space after each question -->
+                </fieldset>
+            `).join("")}
+            <button type="submit">Check Answers</button>
+        </form>
     `;
     return template(title, body);
 }
