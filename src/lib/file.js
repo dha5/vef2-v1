@@ -1,6 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+const DIST_DIR = './dist';
+
 /**
  * Fall sem kannar hvort dist mappan sé til, ef ekki býr hana til.
  */
