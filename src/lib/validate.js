@@ -54,8 +54,8 @@ function isValidQuestion(questionObj) {
     if (questionObj.question.includes("Ógild spurning")) {
         return false;
     }
-    
-    question.question = escapeHTML(questionObj.question);
+
+    questionObj.question = escapeHTML(questionObj.question);
 
     // Sannreynir að svör séu til og séu í fylki.
     if (!Array.isArray(questionObj.answers) || questionObj.answers.length === 0) {
