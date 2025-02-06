@@ -56,6 +56,14 @@ async function main() {
         console.log(`Generated ${outputFilename}`);
     }
 
+    // afritar script.js yfir í dist möppu
+    try {
+        await fs.copyFile("./public/script.js", "./dist/script.js");
+        console.log("script.js copied to dist/");
+    } catch (error) {
+        console.error("Failed to copy script.js:", error);
+    }
+
 }
 
 main();

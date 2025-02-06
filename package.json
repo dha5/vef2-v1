@@ -4,8 +4,6 @@
   "description": "Lausn á verkefni 1",
   "main": "index.js",
   "scripts": {
-    "build": "node build.js && cp public/script.js dist/",
-    "postbuild": "cp public/script.js dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
