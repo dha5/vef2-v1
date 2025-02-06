@@ -11,6 +11,7 @@ export function template(title, body) {
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width" />
                 <link rel ="stylesheet" href="styles.css" />
+                <script defer src="script.js"></script> <!-- Include script.js -->
                 <title>${title}</title>
             </head>
             <body>
@@ -66,7 +67,9 @@ export function generateCategoryHtml(title, questions) {
                                     ? q.answers
                                        .map(
                                             (a) => /* HTML */ `
-                                                <li>${a.answer}</li>
+                                                <li class="answer" data-correct="${a.correct}">
+                                                ${a.answer}
+                                                </li>
                                             `
                                         )
                                         .join("")
