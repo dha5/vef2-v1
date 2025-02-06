@@ -22,6 +22,7 @@
   "homepage": "https://github.com/dha5/vef2-v1#readme",
   "type": "module",
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1"
   }
 }
