@@ -11,18 +11,25 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const answers = form.querySelectorAll("input[type='radio']:checked");
+        const questions = form.querySelectorAll("fieldset");
 
-        if (answers.length === 0) {
-            alert("Please select an answer for each question!");
+        if (questions.length === 0) {
+            console.error("No questions found!");
             return;
         }
 
-        answers.forEach((answer) => {
-            const isCorrect = answer.getAttribute("data-correct") === "true";
-            const label = answer.parentElement;
+        questions.forEach((fieldset) => {
+            const selectedAnswer = fieldset.querySelector("input[type='radio']:checked");
 
-            form.querySelectorAll("label").forEach((lbl) => {
+            if (!selectedAnswer) {
+                console.warn("No answer selected for a question!");
+                return;
+            }
+
+            const isCorrect = selectedAnswer.getAttribute("data-correct") === "true";
+            const label = selectedAnswer.parentElement;
+
+            fieldset.querySelectorAll("label").forEach((lbl) => {
                 lbl.style.backgroundColor = "";
                 lbl.innerHTML = lbl.innerHTML.replace(/✔|✖/g, "");
             });
@@ -32,3 +39,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
