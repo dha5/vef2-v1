@@ -1,6 +1,6 @@
-import { readJson, ensureDistDir } from './src/lib/file.js';
-import { validateIndexData, validateQuestions } from './src/lib/validate.js';
-import { generateIndexHtml, generateCategoryHtml } from './src/lib/html.js';
+import { readJson, ensureDistDir } from './lib/file.js';
+import { validateIndexData, validateQuestions } from './lib/validate.js';
+import { generateIndexHtml, generateCategoryHtml } from './lib/html.js';
 import fs from 'fs/promises';
 
 const INDEX_PATH = './data/index.json';
