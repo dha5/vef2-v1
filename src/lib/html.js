@@ -56,30 +56,23 @@ export function generateCategoryHtml(title, questions) {
     const body = /* HTML */ `
         <h1>${title}</h1>
         <a href="index.html">Til baka</a>
-        <ul>
-            ${questions
-                .map(
-                    (q) => /* HTML */ `
-                        <li>
-                            <p>${q.question}</p>
-                            <ul>
-                                ${Array.isArray(q.answers)
-                                    ? q.answers
-                                       .map(
-                                            (a) => /* HTML */ `
-                                                <li class="answer" data-correct="${a.correct}">
-                                                ${a.answer}
-                                                </li>
-                                            `
-                                        )
-                                        .join("")
-                                    : "<li>Ógild svör</li>"}
-                            </ul>
-                        </li>
-                    `
-                )
-                .join("")}
-        </ul>
+        <form class="quiz-form">
+    ${questions.map((q, qIndex) => /* HTML */ `
+        <fieldset>
+            <legend>${q.question}</legend>
+            ${Array.isArray(q.answers)
+                ? q.answers.map((a, aIndex) => /* HTML */ `
+                    <label>
+                        <input type="radio" name="question-${qIndex}" value="${a.answer}" data-correct="${a.correct}">
+                        ${a.answer}
+                    </label>
+                `).join("")
+                : "<p>Ógild svör</p>"}
+        </fieldset>
+    `).join("")}
+    <button type="submit">Check Answers</button>
+</form>
+
     `;
     return template(title, body);
 }

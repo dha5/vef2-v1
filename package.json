@@ -2,27 +2,46 @@
   "name": "vef2-2025-v1",
   "version": "1.0.0",
   "description": "Lausn á verkefni 1",
-  "main": "index.js",
+  "type": "module",
+  "main": "src/generate.js",
+  "engines": {
+    "node": "22"
+  },
   "scripts": {
     "build": "run-s build:*",
     "build:clean": "rimraf dist",
     "build:generate": "node src/generate.js",
-    "build:copy-public": "cpy public dist --flat"
+    "build:copy-public": "cpy public dist --flat",
+    "dev": "browser-sync start --serveStatic ./dist --server --files ./public/styles.css ./dist/*.*",
+    "test": "cross-env NODE_OPTIONS='--experimental-vm-modules' NODE_NO_WARNINGS=1 jest ./*.test.js --silent",
+    "test:coverage": "cross-env NODE_OPTIONS='--experimental-vm-modules' NODE_NO_WARNINGS=1 jest ./*.test.js --coverage --silent",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint ./src/**/*.js",
+    "lint:stylelint": "stylelint ./public/styles.css"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dha5/vef2-v1.git"
-  },
-  "author": "dha5",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dha5/vef2-v1/issues"
-  },
-  "homepage": "https://github.com/dha5/vef2-v1#readme",
-  "type": "module",
   "dependencies": {
     "cpy-cli": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^6.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@jest/globals": "^29.7.0",
+    "browser-sync": "^3.0.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.14.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.2",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "./src/**/lib/**"
+    ]
   }
 }

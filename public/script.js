@@ -6,10 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const isCorrect = answer.dataset.correct === "true";
 
             document.querySelectorAll(".answer").forEach((el) => {
-                el.style.bacgroundColor = "";
+                el.style.backgroundColor = "";
+                el.innerHTML = el.innerHTML.replace(/✔|✖/g, "");
             });
 
             answer.style.backgroundColor = isCorrect ? "lightgreen" : "red";
+            answer.innerHTML += isCorrect ? " ✔" : " ✖";
         });
     });
 });
