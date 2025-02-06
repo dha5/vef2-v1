@@ -1,17 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Script loaded!");
 
-    document.querySelectorAll(".answer").forEach((answer) => {
-        answer.addEventListener("click", () => {
-            const isCorrect = answer.dataset.correct === "true";
+    const form = document.querySelector(".quiz-form");
 
-            document.querySelectorAll(".answer").forEach((el) => {
-                el.style.backgroundColor = "";
-                el.innerHTML = el.innerHTML.replace(/✔|✖/g, "");
+    if (!form) {
+        console.error("Quiz form not found!");
+        return;
+    }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const answers = form.querySelectorAll("input[type='radio']:checked");
+
+        if (answers.length === 0) {
+            alert("Please select an answer for each question!");
+            return;
+        }
+
+        answers.forEach((answer) => {
+            const isCorrect = answer.getAttribute("data-correct") === "true";
+            const label = answer.parentElement;
+
+            form.querySelectorAll("label").forEach((lbl) => {
+                lbl.style.backgroundColor = "";
+                lbl.innerHTML = lbl.innerHTML.replace(/✔|✖/g, "");
             });
 
-            answer.style.backgroundColor = isCorrect ? "lightgreen" : "red";
-            answer.innerHTML += isCorrect ? " ✔" : " ✖";
+            label.style.backgroundColor = isCorrect ? "lightgreen" : "red";
+            label.innerHTML += isCorrect ? " ✔" : " ✖";
         });
     });
 });
