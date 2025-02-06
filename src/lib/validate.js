@@ -40,7 +40,7 @@ function escapeHTML(str) {
 
 /**
  * Sannreynir hvort spurning og svör við spurningu sé af réttu tagi.
- * Sendir svör einnig í escapeHTML.
+ * Sendir svör og spurningar einnig í escapeHTML.
  * @param {Object} questionObj - Spurningar hlutur.
  * @returns {boolean} - Skilar true ef spurning er á réttu formi, annars false.
  */
@@ -54,6 +54,8 @@ function isValidQuestion(questionObj) {
     if (questionObj.question.includes("Ógild spurning")) {
         return false;
     }
+    
+    question.question = escapeHTML(questionObj.question);
 
     // Sannreynir að svör séu til og séu í fylki.
     if (!Array.isArray(questionObj.answers) || questionObj.answers.length === 0) {
