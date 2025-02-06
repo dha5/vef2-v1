@@ -11,7 +11,7 @@ export function template(title, body) {
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width" />
                 <link rel ="stylesheet" href="styles.css" />
-                <script defer src="../public/script.js"></script> <!-- Include script.js -->
+                <script defer src="/script.js"></script> <!-- Include script.js -->
                 <title>${title}</title>
             </head>
             <body>
