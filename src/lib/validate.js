@@ -1,7 +1,7 @@
 /**
- * Validates and filters the index data.
- * @param {Array} data - The data from index.json.
- * @returns {Array} - A filtered array with only valid entries.
+ * Sannreynir og síar út ógild gögn úr index skránni.
+ * @param {Array} data - gögn úr index skrá.
+ * @returns {Array} - fylki með gögnum sem er búið að sannreyna og sía.
  */
 
 export function validateIndexData(data) {
@@ -11,12 +11,12 @@ export function validateIndexData(data) {
     }
 
     return data.filter((entry) => {
-        //ignore corrupt.json and invalid.json
+        // Hunsa corrupt.json og invalid.json
         if (entry.file === 'corrupt.json' || entry.file === 'invalid.json') {
             console.warn(`Ignoring corrupt.json entry:`, entry);
             return false;
         }
-        // Ensure each entry has the expected structure
+        // Sannreynir að gögn hafi rétt "structure".
         if (typeof entry.title !== 'string' || typeof entry.file !== 'string') {
             console.warn(`Invalid entry found and ignored: `, entry);
             return false;

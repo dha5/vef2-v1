@@ -1,8 +1,8 @@
 /**
- * Generates the HTML for a page.
- * @param {string} title - Title of the page.
- * @param {string} body - HTML body of the page.
- * @returns {string} - Full HTML document.
+ * Býr til HTML fyrir síðu.
+ * @param {string} title - Titill síðu.
+ * @param {string} body - HTML body síðu.
+ * @returns {string} - Full HTML skrá.
  */
 export function template(title, body) {
     return /* HTML */ `<!doctype html>
@@ -22,9 +22,9 @@ export function template(title, body) {
 }
 
 /**
- * Generate HTML for index.html
- * @param {Array} categories List of quiz categories
- * @returns {string} Full HTML document.
+ * Býr til HTML fyrir index.html
+ * @param {Array} categories listi af spurninga flokkum.
+ * @returns {string} Full HTML skrá.
  */
 export function generateIndexHtml(categories) {
     const body = /* HTML */ `
@@ -46,10 +46,10 @@ export function generateIndexHtml(categories) {
 }
 
 /**
- * Generate HTML for a category page.
- * @param {string} title Category title.
- * @param {Array} questions List of questions for this category.
- * @returns {string} Full HTML document.
+ * Býr til HTML fyrir spurninga flokks síðu.
+ * @param {string} title Titill flokks.
+ * @param {Array} questions Listi af spurningum fyrir þennan flokk.
+ * @returns {string} Full HTML skrá.
  */
 export function generateCategoryHtml(title, questions) {
     const body = /* HTML */ `

@@ -2,9 +2,20 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 /**
- * Reads a JSON file and returns its parsed content.
- * @param {string} filepath - The path of the file to read.
- * @returns {Promise<unknown | null>} The parsed JSON content or null if an error occurs.
+ * Fall sem kannar hvort dist mappan sé til, ef ekki býr hana til.
+ */
+export async function ensureDistDir() {
+    try {
+        await fs.mkdir(DIST_DIR, {recursive: true});
+    } catch (err) {
+        console.error('Error creating dist directory:', err)
+    }
+}
+
+/**
+ * Les JSON skrá, parsar go skilar gögnum.
+ * @param {string} filepath - Slóð skránnar sem á að lesa.
+ * @returns {Promise<unknown | null>} Parsed JSON gögn eða null.
  */
 export async function readJson(filepath) {
     let data;
